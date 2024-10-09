@@ -4,19 +4,19 @@ class Calculadora
         define_method operacao do |a, b|
             if operacao.to_s == "somar"
                 soma = a + b
-                puts "#{a} + #{b} = #{soma}"
+                puts "#{a.to_i} + #{b.to_i} = #{soma.to_i}"
             elsif operacao.to_s == "subtrair"
                 subtrair = a - b
-                puts "Subtração: #{subtrair}"
+                puts "#{a.to_i} - #{b.to_i} = #{subtrair.to_i}"
             elsif operacao.to_s == "multiplicar"
-                multiplica = a * b
-                puts "Multiplicação: #{multiplica}"
+                multiplicar = a * b
+                puts "#{a} * #{b} = #{'%.2f' % multiplicar}"
             elsif operacao.to_s == "dividir"
                 if b.zero?
-                    puts "Erro: divisão por zero"
+                    puts "Erro! divisão por zero"
                 else
-                     divide = a / b
-                    puts "Divisão: #{divide}"
+                    dividir = a / b
+                    puts "#{a} / #{b} = #{'%.2f' % dividir}"
                 end
             end
         end
@@ -35,9 +35,12 @@ def limpar_tela
     system('clear') || system('cls')
 end
 
+
 def tempo(segundos)
-    segundos.times do |i|
-        sleep(1)
+    total_segundos = segundos.to_f
+    while total_segundos > 0
+      sleep(0.1)
+      total_segundos -= 0.1
     end
 end
 
@@ -73,6 +76,7 @@ def menu
             limpar_tela
             puts "Subtrair"
             a, b = entradas
+            limpar_tela
             calc.subtrair(a, b)
             puts "tecle Enter para Proseguir"
             gets
@@ -81,6 +85,7 @@ def menu
             limpar_tela
             puts "Multiplicar"
             a, b = entradas
+            limpar_tela
             calc.multiplicar(a, b)
             puts "tecle Enter para Proseguir"
             gets
@@ -89,13 +94,14 @@ def menu
             limpar_tela
             puts "Dividir"
             a, b = entradas
+            limpar_tela
             calc.dividir(a, b)
             puts "tecle Enter para Proseguir"
             gets
             limpar_tela
         elsif escolha == 0
             puts "Saindo..."
-            tempo(2)
+            tempo(1.5)
             return
         else
             puts "Escolha inválida! Tente novamente"
