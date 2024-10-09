@@ -30,3 +30,46 @@ def entradas
     b = gets.chomp.to_f
     return a, b
 end
+
+def menu
+    puts ""
+    puts "Calculadora Simples"
+    puts ""
+    calc = Calculadora.new
+    loop do
+        puts "=========menu========="
+        puts "1 - Somar"
+        puts "2 - Subtrair"
+        puts "3 - Multiplicar"
+        puts "4 - Dividir"
+        puts "0 - Sair"
+        print "Escolha: "
+
+        escolha = gets.chomp.to_i
+
+        if escolha == 1
+            puts "Somar"
+            a, b = entradas
+            calc.somar(a, b)
+        elsif escolha == 2
+            puts "Subtrair"
+            a, b = entradas
+            calc.subtrair(a, b)
+        elsif escolha == 3
+            puts "Multiplicar"
+            a, b = entradas
+            calc.multiplicar(a, b)
+        elsif escolha == 4
+            puts "Dividir"
+            a, b = entradas
+            calc.dividir(a, b)
+        elsif escolha == 0
+            puts "Saindo..."
+            return
+        else
+            puts "Escolha inválida! Tente novamente"
+        end
+    end
+end
+
+menu
