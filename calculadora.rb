@@ -22,3 +22,11 @@ class Calculadora
         end
     end
 end
+
+def entradas
+    print "Número 1: "
+    a = gets.chomp.to_f
+    print "Número 2: "
+    b = gets.chomp.to_f
+    return a, b
+end
