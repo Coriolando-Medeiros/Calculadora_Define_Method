@@ -31,6 +31,16 @@ def entradas
     return a, b
 end
 
+def limpar_tela
+    system('clear') || system('cls')
+end
+
+def tempo(segundos)
+    segundos.times do |i|
+        sleep(1)
+    end
+end
+
 def menu
     puts ""
     puts "Calculadora Simples"
