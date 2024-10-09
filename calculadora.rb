@@ -4,7 +4,7 @@ class Calculadora
         define_method operacao do |a, b|
             if operacao.to_s == "somar"
                 soma = a + b
-                puts "Soma: #{soma}"
+                puts "#{a} + #{b} = #{soma}"
             elsif operacao.to_s == "subtrair"
                 subtrair = a - b
                 puts "Subtração: #{subtrair}"
@@ -42,9 +42,11 @@ def tempo(segundos)
 end
 
 def menu
+    limpar_tela
     puts ""
     puts "Calculadora Simples"
     puts ""
+    tempo(1)
     calc = Calculadora.new
     loop do
         puts "=========menu========="
@@ -57,24 +59,43 @@ def menu
 
         escolha = gets.chomp.to_i
 
+        limpar_tela
         if escolha == 1
+            limpar_tela
             puts "Somar"
             a, b = entradas
+            limpar_tela
             calc.somar(a, b)
+            puts "tecle Enter para Proseguir"
+            gets
+            limpar_tela
         elsif escolha == 2
+            limpar_tela
             puts "Subtrair"
             a, b = entradas
             calc.subtrair(a, b)
+            puts "tecle Enter para Proseguir"
+            gets
+            limpar_tela
         elsif escolha == 3
+            limpar_tela
             puts "Multiplicar"
             a, b = entradas
             calc.multiplicar(a, b)
+            puts "tecle Enter para Proseguir"
+            gets
+            limpar_tela
         elsif escolha == 4
+            limpar_tela
             puts "Dividir"
             a, b = entradas
             calc.dividir(a, b)
+            puts "tecle Enter para Proseguir"
+            gets
+            limpar_tela
         elsif escolha == 0
             puts "Saindo..."
+            tempo(2)
             return
         else
             puts "Escolha inválida! Tente novamente"
