@@ -1,25 +1,35 @@
 class Calculadora
-    attr_accessor :a, :b
+    attr_accessor :a, :b, :historico
+
+    def initialize
+        @historico = {}
+    end
+
     [:somar, :subtrair, :multiplicar, :dividir].each do |operacao|
         define_method operacao do |a, b|
             if operacao.to_s == "somar"
                 soma = a + b
+                @historico[:somar] = "A: #{a} + B: #{b} = #{soma}"
                 puts "#{a.to_i} + #{b.to_i} = #{soma.to_i}"
             elsif operacao.to_s == "subtrair"
                 subtrair = a - b
+                @historico[:subtrair] = "A: #{a} - B: #{b} = #{subtrair}"
                 puts "#{a.to_i} - #{b.to_i} = #{subtrair.to_i}"
             elsif operacao.to_s == "multiplicar"
                 multiplicar = a * b
+                @historico[:multiplicar] = "A: #{a} * B: #{b} = #{multiplica}"
                 puts "#{a} * #{b} = #{'%.2f' % multiplicar}"
             elsif operacao.to_s == "dividir"
                 if b.zero?
                     puts "Erro! divisão por zero"
                 else
                     dividir = a / b
+                    @historico[:dividir] = "A: #{a} / B: #{b} = #{divide}"
                     puts "#{a} / #{b} = #{'%.2f' % dividir}"
                 end
             end
         end
+        @historico
     end
 end
 
