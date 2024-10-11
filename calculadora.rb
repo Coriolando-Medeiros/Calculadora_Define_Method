@@ -31,6 +31,15 @@ class Calculadora
         end
         @historico
     end
+
+    def apagar_historico
+        if @historico.empty?
+            puts "Histórico vazio!"
+        else
+            @historico = {}
+            puts "Histórico apagado!"
+        end
+    end
 end
 
 def entradas
@@ -39,6 +48,17 @@ def entradas
     print "Número 2: "
     b = gets.chomp.to_f
     return a, b
+end
+
+def mostrar_historico(calc)
+    puts "Histórico de operações"
+    if calc.historico.any?
+        calc.historico.each do |op, resultado|
+            puts "#{op.capitalize}: #{resultado}"
+        end
+    else
+        puts "Nenhuma operação foi realizada!"
+    end
 end
 
 def limpar_tela
@@ -67,6 +87,8 @@ def menu
         puts "2 - Subtrair"
         puts "3 - Multiplicar"
         puts "4 - Dividir"
+        puts "5 - Histórico"
+        puts "6 - Apagar histórico"
         puts "0 - Sair"
         print "Escolha: "
 
@@ -109,6 +131,10 @@ def menu
             puts "tecle Enter para Proseguir"
             gets
             limpar_tela
+        elsif escolha == 5
+            mostrar_historico(calc)
+        elsif escolha == 6
+            calc.apagar_historico
         elsif escolha == 0
             puts "Saindo..."
             tempo(1.5)
